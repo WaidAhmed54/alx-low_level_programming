@@ -1,14 +1,13 @@
-#include "main.h"
-#include <stdio.h>
+#include "holberton.h"
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * _memset - copy char
- * @s: string
- * @b: input
- * @n: bytes
- * Return: string
+ * *_memset - fills memory with a constant byte
+ * @s: memory area to be filled
+ * @b: char to copy
+ * @n: number of times to copy b
+ *
+ * Return: pointer to the memory area s
  */
 char *_memset(char *s, char b, unsigned int n)
 {
@@ -23,22 +22,28 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * _calloc - allocates memory for an array using malloc
- * @nmemb: n elements
- * @size: bytes
- * Return: pointer
+ * _calloc - allocates memory for an array, using malloc.
+ * @nmemb: the number of memory blocks to be created.
+ * @size: the size of each block.
+ *
+ * Return: void pointer
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	void *p;
+	void *memarray;
+	unsigned int len;
 
-	if (nmeb == 0 || size == 0)
+	len = nmemb * size;
+
+	if (nmemb == 0 || size == 0)
 		return (NULL);
-	p = malloc(nmemb * size);
 
-	if (p == NULL)
+	memarray = malloc(len);
+
+	if (memarray == NULL)
 		return (NULL);
-	_memset(p, 0, (nmemb * size));
 
-	return (p);
+	_memset(memarray, 0, len);
+
+	return (memarray);
 }
